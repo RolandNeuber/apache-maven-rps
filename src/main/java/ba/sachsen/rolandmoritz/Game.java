@@ -63,7 +63,7 @@ public class Game {
 
         RockPaperScissors computerMove = getRockPaperScissors(validInputs[rand.nextInt(3)]);
 
-        sleep(rand.nextInt(700, 2000));
+        sleep(700 + rand.nextInt(1300));
         System.out.println("The computer chose " + computerMove.toString() + ".");
 
         sleep(1000);
