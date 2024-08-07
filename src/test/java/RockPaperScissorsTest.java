@@ -1,4 +1,5 @@
-import ba.sachsen.rolandmoritz.RockPaperScissors;
+import ba.sachsen.rolandmoritz.models.enums.GameResult;
+import ba.sachsen.rolandmoritz.models.enums.RockPaperScissors;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -7,15 +8,14 @@ public class RockPaperScissorsTest {
     public void testRockPaperScissorsRockWinGetter() {
         RockPaperScissors rock = RockPaperScissors.Rock;
 
-        Boolean res1 = rock.wonAgainst(RockPaperScissors.Rock);
-        Assert.assertNull(res1);
+        GameResult res1 = rock.getResultAgainst(RockPaperScissors.Rock);
+        Assert.assertEquals(res1, GameResult.Tie);
 
-        Boolean res2 = rock.wonAgainst(RockPaperScissors.Paper);
+        GameResult res2 = rock.getResultAgainst(RockPaperScissors.Paper);
         Assert.assertNotNull(res2);
-        Assert.assertFalse(res2);
+        Assert.assertEquals(res2, GameResult.Loss);
 
-        Boolean res3 = rock.wonAgainst(RockPaperScissors.Scissors);
-        Assert.assertNotNull(res3);
-        Assert.assertTrue(res3);
+        GameResult res3 = rock.getResultAgainst(RockPaperScissors.Scissors);
+        Assert.assertEquals(res3, GameResult.Win);
     }
 }

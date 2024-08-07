@@ -1,4 +1,4 @@
-package ba.sachsen.rolandmoritz;
+package ba.sachsen.rolandmoritz.models.enums;
 
 public enum RockPaperScissors {
     Rock(1),
@@ -18,28 +18,37 @@ public enum RockPaperScissors {
     /**
      * Checks if this object won against another RockPaperScissors opponent
      * @param opponent opponent of type RockPaperScissors
-     * @return Returns null if it's a tie, true if it's a win
+     * @return GameResult
      */
-    public Boolean wonAgainst(RockPaperScissors opponent){
+    public GameResult getResultAgainst(RockPaperScissors opponent){
         int opponentValue = opponent.getValue();
 
         //Tie
         if(value == opponentValue){
-            return null;
+            return GameResult.Tie;
         }
 
         //Rock wins against scissors
         if(value == 1){
-            return opponentValue == 3;
+            if(opponentValue == 3){
+                return GameResult.Win;
+            }
+            return GameResult.Loss;
         }
 
         //Paper wins against rock
         if(value == 2){
-            return opponentValue == 1;
+            if(opponentValue == 1){
+                return GameResult.Win;
+            }
+            return GameResult.Loss;
         }
 
         //Scissors win against paper
-        return opponentValue == 2;
+        if(opponentValue == 2){
+            return GameResult.Win;
+        }
+        return GameResult.Loss;
     }
 
     @Override
