@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion> <!-- Version of POM model, should be 4.0.0 -->
 
-    <groupId>org.example</groupId>
-    <artifactId>ApacheMaven-RPS</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>org.example</groupId> <!-- (Unique) name of group -->
+    <artifactId>ApacheMaven-RPS</artifactId> <!-- name of project -->
+    <version>1.0-SNAPSHOT</version> <!-- Version number of project -->
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -18,9 +18,28 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
+            <version>RELEASE</version> <!-- Version of dependency -->
+            <scope>test</scope> <!-- include in testing but not release -->
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId> <!-- plug-in for building JARs -->
+                <version>3.3.0</version> <!-- Version of plug-in -->
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>ba.sachsen.rolandmoritz.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
